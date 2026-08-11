@@ -29,6 +29,13 @@ local util = require("util")
 
 local Download = {}
 
+local function _downloadDir(is_kindle, add_to_kindle_library, configured_dir)
+    if is_kindle and add_to_kindle_library then
+        return Config.KINDLE_DOCUMENTS_DIR
+    end
+    return configured_dir or Config.DEFAULT_DOWNLOAD_DIR_FALLBACK
+end
+
 -- scheme://host[:port]/path of a url, without the query: a resolved download link carries its
 -- signature in the query, which is credential-equivalent and must not land in crash.log.
 local function _loggableUrl(url)
@@ -190,7 +197,8 @@ function Download.run(self, book)
     local filename = string.format("%s - %s.%s", safe_title, safe_author, book_format)
     logger.info(string.format("Zlibrary:downloadBook - Proposed filename: %s", filename))
 
-    local target_dir = Config.getDownloadDir()
+    local target_dir = _downloadDir(Device:isKindle(), Config.getAddToKindleLibrary(),
+        Config.getDownloadDir())
 
     if not target_dir then
         target_dir = Config.DEFAULT_DOWNLOAD_DIR_FALLBACK

@@ -20,6 +20,7 @@ If you find this plugin helpful, please consider supporting its development. You
 ## Features
 
 *   Search Z-library for books.
+*   On Kindle, optionally save compatible downloads in the native Kindle library as well as making them available to KOReader.
 *   Filter search results by language and file extension.
 *   Browse most popular and recommended books.
 *   Download content directly to your device.
@@ -37,6 +38,15 @@ If you find this plugin helpful, please consider supporting its development. You
 3.  Restart KOReader.
 
 ## Configuration
+
+### Kindle library integration
+
+By default, downloads are saved to KOReader's configured download directory and do **not**
+automatically appear on the Kindle home screen. On a Kindle, enable **Settings → Add downloads to
+Kindle library** to save new downloads under `/mnt/us/documents`, where Kindle's native library can
+index formats it supports. The same files remain available in KOReader. Formats unsupported by the
+native Kindle reader (for example, EPUB files copied directly over USB) remain readable only in
+KOReader; the plugin does not convert them.
 
 There are two ways to configure your Z-library credentials:
 

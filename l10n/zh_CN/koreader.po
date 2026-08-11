@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: v1.0.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 08:01+0000\n"
+"POT-Creation-Date: 2026-08-11 06:00+0000\n"
 "PO-Revision-Date: 2026-04-03 00:00+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh <zh@li.org>\n"
@@ -38,6 +38,9 @@ msgstr "登录成功！"
 
 msgid "Set download directory"
 msgstr "设置下载目录"
+
+msgid "Add downloads to Kindle library"
+msgstr ""
 
 msgid "Ask to open after download"
 msgstr "下载后询问是否打开"

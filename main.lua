@@ -134,6 +134,24 @@ function Zlibrary:addToMainMenu(menu_items)
                             callback = function()
                                 Ui.showDownloadDirectoryDialog()
                             end,
+                            enabled_func = function()
+                                return not (Device:isKindle() and Config.getAddToKindleLibrary())
+                            end,
+                        }, {
+                            -- Kindle's native library indexes supported documents under
+                            -- /mnt/us/documents. Downloading there also leaves the file available
+                            -- to KOReader; unsupported Kindle formats remain KOReader-only.
+                            text = T("Add downloads to Kindle library"),
+                            keep_menu_open = true,
+                            enabled_func = function()
+                                return Device:isKindle()
+                            end,
+                            checked_func = function()
+                                return Device:isKindle() and Config.getAddToKindleLibrary()
+                            end,
+                            callback = function()
+                                Config.setAddToKindleLibrary(not Config.getAddToKindleLibrary())
+                            end,
                         }, {
                             -- Sits beside the download directory rather than under View Settings:
                             -- it changes what happens after a download, not how a list looks.
