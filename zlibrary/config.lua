@@ -22,6 +22,7 @@ Config.SETTINGS_SEARCH_EXTENSIONS_KEY = "zlibrary_search_extensions"
 Config.SETTINGS_SEARCH_ORDERS_KEY = "zlibrary_search_order"
 Config.SETTINGS_VIEW_SETTINGS_KEY = "zlibrary_view_settings"
 Config.SETTINGS_DOWNLOAD_DIR_KEY = "zlibrary_download_dir"
+Config.SETTINGS_KINDLE_LIBRARY_KEY = "zlibrary_kindle_library"
 Config.SETTINGS_CATEGORIES_KEY = "zlibrary_categories"
 Config.SETTINGS_TURN_OFF_WIFI_AFTER_DOWNLOAD_KEY = "zlibrary_turn_off_wifi_after_download"
 Config.SETTINGS_SKIP_OPEN_BOOK_PROMPT_KEY = "zlibrary_skip_open_book_prompt"
@@ -37,6 +38,7 @@ Config.CREDENTIALS_FILENAME = "zlibrary_credentials.lua"
 
 Config.DEFAULT_DOWNLOAD_DIR_FALLBACK = G_reader_settings:readSetting("home_dir")
              or require("apps/filemanager/filemanagerutil").getDefaultDir()
+Config.KINDLE_DOCUMENTS_DIR = "/mnt/us/documents"
 Config.USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"
 Config.SEARCH_RESULTS_LIMIT = 30
 
@@ -816,6 +818,17 @@ end
 
 function Config.getDownloadDir()
     return Config.getSetting(Config.SETTINGS_DOWNLOAD_DIR_KEY, Config.DEFAULT_DOWNLOAD_DIR_FALLBACK)
+end
+
+-- The Kindle framework indexes supported files placed below /mnt/us/documents and exposes them
+-- on its home/library screen. Keep this opt-in: a user may deliberately keep KOReader downloads
+-- elsewhere, and non-Kindle devices do not have this mount point.
+function Config.getAddToKindleLibrary()
+    return Config.getSetting(Config.SETTINGS_KINDLE_LIBRARY_KEY, false)
+end
+
+function Config.setAddToKindleLibrary(enabled)
+    Config.saveSetting(Config.SETTINGS_KINDLE_LIBRARY_KEY, enabled == true)
 end
 
 function Config.getSearchLanguages()

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 08:01+0000\n"
+"POT-Creation-Date: 2026-08-11 06:00+0000\n"
 "PO-Revision-Date: 2026-07-22 00:39+0100\n"
 "Last-Translator: CookieCaptainD\n"
 "Language-Team: pt_PT\n"
@@ -44,6 +44,9 @@ msgstr "Sessão iniciada com sucesso!"
 
 msgid "Set download directory"
 msgstr "Definir diretório de transferências"
+
+msgid "Add downloads to Kindle library"
+msgstr ""
 
 msgid "Ask to open after download"
 msgstr "Perguntar se deseja abrir após a transferência"
